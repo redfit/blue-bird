@@ -3,6 +3,8 @@ import { cookies } from "next/headers";
 import { Database } from "@/lib/database.types";
 import Image from "next/image";
 
+export const dynamic = "force-dynamic";
+
 export default function NewTweet({ user }: { user: User }) {
   const addTweet = async (formData: FormData) => {
     "use server";
