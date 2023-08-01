@@ -3,7 +3,7 @@ import { cookies } from "next/headers";
 import AuthButtonServer from "@/app/auth-button-server";
 import { redirect } from "next/navigation";
 import NewTweet from "@/app/new-tweet";
-import Likes from "./likes";
+import Tweets from "@/app/tweets";
 
 export default async function Home() {
   const supabase = createServerComponentClient<Database>({ cookies });
@@ -32,13 +32,7 @@ export default async function Home() {
     <>
       <AuthButtonServer />
       <NewTweet />
-      {tweets?.map((tweet) => (
-        <div key={tweet.id}>
-          <p>{tweet.author.username}</p>
-          <p>{tweet.title}</p>
-          <Likes tweet={tweet} />
-        </div>
-      ))}
+      <Tweets tweets={tweets} />
     </>
   );
 }
